@@ -10,11 +10,20 @@ package biblioteca.views;
  * @author Rodri
  */
 public class TelaPrincipal extends javax.swing.JFrame {
+    TelaDevolucao tD = new TelaDevolucao();
+    TelaEmprestimo tE = new TelaEmprestimo();
+    TelaUsuario tU = new TelaUsuario();
+    TelaLivro tL = new TelaLivro();
+    
 
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
+        tD.setVisible(false);
+        tE.setVisible(false);
+        tL.setVisible(false);
+        tU.setVisible(false);
         initComponents();
     }
 
@@ -27,55 +36,101 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botaoEfetuarEmprestimo = new javax.swing.JButton();
+        botaoEfetuarDevolucao = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        botaoCadastrarLivros = new javax.swing.JButton();
+        botaoCadastrarUsuarios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Main");
         setBackground(new java.awt.Color(255, 255, 204));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jButton1.setText("Efetuar Emprestimo");
+        botaoEfetuarEmprestimo.setText("Efetuar Emprestimo");
+        botaoEfetuarEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEfetuarEmprestimoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Efetuar Devolução");
+        botaoEfetuarDevolucao.setText("Efetuar Devolução");
+        botaoEfetuarDevolucao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEfetuarDevolucaoActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Tela Principal");
         jLabel1.setToolTipText("");
 
+        botaoCadastrarLivros.setText("Cadastrar Livros");
+        botaoCadastrarLivros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCadastrarLivrosActionPerformed(evt);
+            }
+        });
+
+        botaoCadastrarUsuarios.setText("Cadastrar Usuarios");
+        botaoCadastrarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCadastrarUsuariosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(89, 89, 89))))
+                        .addComponent(botaoCadastrarLivros)
+                        .addGap(18, 18, 18)
+                        .addComponent(botaoCadastrarUsuarios)
+                        .addGap(18, 18, 18)
+                        .addComponent(botaoEfetuarEmprestimo)
+                        .addGap(18, 18, 18)
+                        .addComponent(botaoEfetuarDevolucao)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(36, 36, 36))
+                    .addComponent(botaoCadastrarLivros)
+                    .addComponent(botaoCadastrarUsuarios)
+                    .addComponent(botaoEfetuarEmprestimo)
+                    .addComponent(botaoEfetuarDevolucao))
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botaoCadastrarLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarLivrosActionPerformed
+        tL.setVisible(true);
+    }//GEN-LAST:event_botaoCadastrarLivrosActionPerformed
+
+    private void botaoCadastrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarUsuariosActionPerformed
+        tU.setVisible(true);
+    }//GEN-LAST:event_botaoCadastrarUsuariosActionPerformed
+
+    private void botaoEfetuarEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEfetuarEmprestimoActionPerformed
+        tE.setVisible(true);
+    }//GEN-LAST:event_botaoEfetuarEmprestimoActionPerformed
+
+    private void botaoEfetuarDevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEfetuarDevolucaoActionPerformed
+        tD.setVisible(true);
+    }//GEN-LAST:event_botaoEfetuarDevolucaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,8 +168,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton botaoCadastrarLivros;
+    private javax.swing.JButton botaoCadastrarUsuarios;
+    private javax.swing.JButton botaoEfetuarDevolucao;
+    private javax.swing.JButton botaoEfetuarEmprestimo;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
