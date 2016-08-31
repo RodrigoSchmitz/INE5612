@@ -19,7 +19,7 @@ public class Biblioteca {
 
     private List<Livro> livros;
     
-    private List<Usuario> usuario;
+    private List<Usuario> usuarios;
     
     private List<Emprestimo> emprestimos;
 
@@ -31,12 +31,12 @@ public class Biblioteca {
         this.livros = livros;
     }
 
-    public List<Usuario> getUsuario() {
-        return usuario;
+    public List<Usuario> getUsuarios() {
+        return usuarios;
     }
 
-    public void setUsuario(List<Usuario> usuario) {
-        this.usuario = usuario;
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
     public List<Emprestimo> getEmprestimos() {

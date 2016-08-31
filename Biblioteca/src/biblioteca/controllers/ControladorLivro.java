@@ -16,7 +16,7 @@ import biblioteca.entitys.Livro;
  * 
  * @author Felipe Di Bernardi S Thiago
  */
-public class ControladorLivro implements Controlavel<Livro> {
+public class ControladorLivro {
 
     private Biblioteca biblioteca;
 
@@ -24,46 +24,23 @@ public class ControladorLivro implements Controlavel<Livro> {
         this.biblioteca = biblioteca;
     }
     
-    @Override
-    public Livro add(Livro t) {
-        if (!this.biblioteca.getLivros().isEmpty()) {
-            t.setCodigo(this.biblioteca.getLivros().get(this.biblioteca.getLivros().size() - 1).getCodigo() + 1);
-        } else {
-            t.setCodigo(1);
-        }
-        this.biblioteca.getLivros().add(t);
-        return t;
+    public String add(Livro livro) {
+        livro.add(livro, this.biblioteca.getLivros());
+        return "Livro adicionado com sucesso";
     }
 
-    @Override
-    public Livro find(Integer codigo) {
-        for (Livro livro : this.biblioteca.getLivros()) {
-            if (livro.getCodigo().equals(codigo)) {
-                return livro;
-            }
-        }
-        return null;
+    public Livro find(Livro livro) {
+        return livro.find(livro.getCodigo(), this.biblioteca.getLivros());
     }
 
-    @Override
-    public Livro update(Livro t) {
-        Livro livroOld = this.find(t.getCodigo());
-        if (livroOld != null) {
-            this.biblioteca.getLivros().set(this.biblioteca.getLivros().indexOf(livroOld), t);
-        } else {
-            this.add(t);
-        }
-        return t;
+    public String update(Livro livro) {
+        livro.update(livro, this.biblioteca.getLivros());
+        return "Livro atualizado com sucesso";
     }
 
-    @Override
-    public Livro remove(Livro t) {
-        Livro livroRemovido = this.find(t.getCodigo());
-        if (livroRemovido != null) {
-            this.biblioteca.getLivros().remove(livroRemovido);
-            return livroRemovido;
-        }
-        return null;
+    public String remove(Livro livro) {
+        livro.remove(livro, this.biblioteca.getLivros());
+        return "Livro removido com sucesso";
     }
 
     public Biblioteca getBiblioteca() {

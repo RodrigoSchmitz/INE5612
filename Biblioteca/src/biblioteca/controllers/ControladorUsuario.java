@@ -16,55 +16,31 @@ import biblioteca.entitys.Usuario;
  * 
  * @author Felipe Di Bernardi S Thiago
  */
-public class ControladorUsuario implements Controlavel<Usuario> {
+public class ControladorUsuario {
 
     private Biblioteca biblioteca;
-
+    
     public ControladorUsuario(Biblioteca biblioteca) {
         this.biblioteca = biblioteca;
     }
     
-    @Override
-    public Usuario add(Usuario t) {
-        if (!biblioteca.getUsuario().isEmpty()) {
-            t.setCodigo(this.biblioteca.getUsuario().get(this.biblioteca.getUsuario().size() - 1).getCodigo() + 1);
-        } else {
-            t.setCodigo(1);
-        }
-        this.biblioteca.getUsuario().add(t);
-        return t;
+    public String add(Usuario usuario) {
+        usuario.add(usuario, this.biblioteca.getUsuarios());
+        return "Usuario adicionado com sucesso.";
     }
 
-    @Override
-    public Usuario find(Integer codigo) {
-        for (Usuario usuario : this.biblioteca.getUsuario()) {
-            if (usuario.getCodigo().equals(codigo)) {
-                return usuario;
-            }
-        }
-        return null;
+    public Usuario find(Usuario usuario) {
+        return usuario.find(usuario.getCodigo(), this.biblioteca.getUsuarios());
     }
 
-    @Override
-    public Usuario update(Usuario t) {
-        Usuario usuarioOld = this.find(t.getCodigo());
-        if (usuarioOld != null) {
-            this.biblioteca.getUsuario().set(this.biblioteca.getUsuario().indexOf(usuarioOld), t);
-        } else {
-            this.add(t);
-        }
-        return t;
+    public String update(Usuario usuario) {
+        usuario.update(usuario, this.biblioteca.getUsuarios());
+        return "Usuario atualizado com sucesso.";
     }
 
-    @Override
-    public Usuario remove(Usuario t) {
-        Usuario usuarioRemovido = this.find(t.getCodigo());
-        if (usuarioRemovido != null) {
-            this.biblioteca.getUsuario().remove(usuarioRemovido);
-            return usuarioRemovido;
-        } else {
-            return null;
-        }
+    public String remove(Usuario usuario) {
+        usuario.remove(usuario, this.biblioteca.getUsuarios());
+        return "Usuario removido com sucesso.";
     }
 
     public Biblioteca getBiblioteca() {

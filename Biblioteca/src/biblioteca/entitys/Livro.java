@@ -6,6 +6,8 @@
 
 package biblioteca.entitys;
 
+import java.util.List;
+
 /**
  * Classe <b>Livro</b>
  * 
@@ -19,6 +21,44 @@ public class Livro {
     
     private Integer codigo;
 
+    public Livro add(Livro livro, List<Livro> livros) {
+        if (livros.isEmpty()) {
+            livro.setCodigo(livros.get(livros.size() - 1).getCodigo() + 1);
+        } else {
+            livro.setCodigo(1);
+        }
+        livros.add(livro);
+        return livro;
+    }
+    
+    public Livro find(Integer codigo, List<Livro> livros) {
+        for (Livro livro : livros) {
+            if (livro.getCodigo().equals(codigo)) {
+                return livro;
+            }
+        }
+        return null;
+    }
+    
+    public Livro update(Livro livro, List<Livro> livros) {
+        Livro livroOld = this.find(livro.getCodigo(), livros);
+        if (livroOld != null) {
+            livros.set(livros.indexOf(livroOld), livro);
+        } else {
+            this.add(livro, livros);
+        }
+        return livro;
+    }
+    
+    public Livro remove(Livro livro, List<Livro> livros) {
+        Livro livroRemovido = this.find(livro.getCodigo(), livros);
+        if (livroRemovido != null) {
+            livros.remove(livroRemovido);
+            return livroRemovido;
+        }
+        return null;
+    }
+    
     public String getNome() {
         return nome;
     }

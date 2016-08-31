@@ -5,21 +5,27 @@
  */
 package biblioteca.views;
 
+import biblioteca.controllers.ControladorPrincipal;
+
 /**
  *
  * @author Rodri
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-    TelaDevolucao tD = new TelaDevolucao();
-    TelaEmprestimo tE = new TelaEmprestimo();
-    TelaUsuario tU = new TelaUsuario();
-    TelaLivro tL = new TelaLivro();
+    
+    private ControladorPrincipal ctrlPrincipal;
+    
+    TelaDevolucao tD = new TelaDevolucao(ctrlPrincipal);
+    TelaEmprestimo tE = new TelaEmprestimo(ctrlPrincipal);
+    TelaUsuario tU = new TelaUsuario(ctrlPrincipal);
+    TelaLivro tL = new TelaLivro(ctrlPrincipal);
     
 
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
+        this.ctrlPrincipal = new ControladorPrincipal();
         tD.setVisible(false);
         tE.setVisible(false);
         tL.setVisible(false);

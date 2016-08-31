@@ -21,6 +21,45 @@ public class Usuario {
     
     private Integer codigo;
 
+    public Usuario add(Usuario usuario, List<Usuario> usuarios) {
+        if (!usuarios.isEmpty()) {
+            usuario.setCodigo(usuarios.get(usuarios.size() - 1).getCodigo() + 1);
+        } else {
+            usuario.setCodigo(1);
+        }
+        usuarios.add(usuario);
+        return usuario;
+    }
+    
+    public Usuario find(Integer codigo, List<Usuario> usuarios) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getCodigo().equals(codigo)) {
+                return usuario;
+            }
+        }
+        return null;
+    }
+    
+    public Usuario update(Usuario usuario, List<Usuario> usuarios) {
+        Usuario usuarioOld = this.find(usuario.getCodigo(), usuarios);
+        if (usuarioOld != null) {
+            usuarios.set(usuarios.indexOf(usuarioOld), usuario);
+        } else {
+            this.add(usuario, usuarios);
+        }
+        return usuario;
+    }
+    
+    public Usuario remove(Usuario usuario, List<Usuario> usuarios) {
+        Usuario usuarioRemovido = this.find(usuario.getCodigo(), usuarios);
+        if (usuarioRemovido != null) {
+            usuarios.remove(usuarioRemovido);
+            return usuarioRemovido;
+        } else {
+            return null;
+        }
+    }
+    
     public String getNome() {
         return nome;
     }

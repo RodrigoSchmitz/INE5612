@@ -29,21 +29,23 @@ public class ControladorEmprestimo {
         this.biblioteca = biblioteca;
     }
 
-    public void emprestar(Livro livro, Usuario usuario) throws LivroNaoEncontradoException {
-        if (this.biblioteca.getLivros().contains(livro)) {
-            this.biblioteca.getEmprestimos().add(new Emprestimo(usuario, livro, new Date()));
-            this.biblioteca.getLivros().remove(livro);
-        } else {
-            throw new LivroNaoEncontradoException("Livro não encontrado");
+    public String emprestar(Livro livro, Usuario usuario) {
+        try {
+            Emprestimo emprestimo = new Emprestimo(usuario, livro, new Date());
+            emprestimo.emprestar(this.biblioteca, emprestimo);
+            return "Livro emprestado com sucesso";
+        } catch (LivroNaoEncontradoException e) {
+            return e.getMessage();
         }
+        
     }
     
-    public void devolver(Emprestimo emprestimo) throws EmprestimoNaoEncontradoException {
-        if (this.biblioteca.getEmprestimos().contains(emprestimo)) {
-            this.biblioteca.getEmprestimos().remove(emprestimo);
-            this.biblioteca.getLivros().add(emprestimo.getLivro());
-        } else {
-            throw new EmprestimoNaoEncontradoException("Emprestimo não encontrado");
+    public String devolver(Emprestimo emprestimo) throws EmprestimoNaoEncontradoException {
+        try {
+            emprestimo.devolver(this.biblioteca, emprestimo);
+            return "Livro devolvido com sucesso";
+        } catch (EmprestimoNaoEncontradoException e) {
+            return e.getMessage();
         }
     }
     

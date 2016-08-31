@@ -6,6 +6,9 @@
 
 package biblioteca.entitys;
 
+import biblioteca.exceptions.EmprestimoNaoEncontradoException;
+import biblioteca.exceptions.LivroNaoEncontradoException;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -22,11 +25,35 @@ public class Emprestimo {
     private Livro livro;
     
     private Date dataEmprestimo;
+    
+    private Date dataDevolucao;
 
     public Emprestimo(Usuario usuario, Livro livro, Date dataEmprestimo) {
         this.usuario = usuario;
         this.livro = livro;
         this.dataEmprestimo = dataEmprestimo;
+        Calendar dataDevolucao = Calendar.getInstance();
+        dataDevolucao.setTime(dataEmprestimo);
+        dataDevolucao.add(Calendar.WEEK_OF_YEAR, 1);
+        this.dataDevolucao = dataDevolucao.getTime();
+    }
+    
+    public void emprestar(Biblioteca biblioteca, Emprestimo emprestimo) throws LivroNaoEncontradoException {
+        if (biblioteca.getLivros().contains(emprestimo.getLivro())) {
+            biblioteca.getEmprestimos().add(emprestimo);
+            biblioteca.getLivros().remove(emprestimo.getLivro());
+        } else {
+            throw new LivroNaoEncontradoException("Livro não encontrado");
+        }
+    }
+    
+    public void devolver(Biblioteca biblioteca, Emprestimo emprestimo) throws EmprestimoNaoEncontradoException {
+        if (biblioteca.getEmprestimos().contains(emprestimo)) {
+            biblioteca.getEmprestimos().remove(emprestimo);
+            biblioteca.getLivros().add(emprestimo.getLivro());
+        } else {
+            throw new EmprestimoNaoEncontradoException("Emprestimo não encontrado");
+        }
     }
     
     public Usuario getUsuario() {
@@ -51,6 +78,14 @@ public class Emprestimo {
 
     public void setDataEmprestimo(Date dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
+    }
+
+    public Date getDataDevolucao() {
+        return dataDevolucao;
+    }
+
+    public void setDataDevolucao(Date dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
     }
     
 }
