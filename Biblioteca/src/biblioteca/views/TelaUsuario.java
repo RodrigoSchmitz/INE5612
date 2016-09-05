@@ -6,6 +6,10 @@
 package biblioteca.views;
 
 import biblioteca.controllers.ControladorPrincipal;
+import biblioteca.entitys.Usuario;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +27,27 @@ public class TelaUsuario extends javax.swing.JFrame {
         this.ctrlPrincipal = ctrlPrincipal;
         initComponents();
     }
+    
+    private void setarTempoLimparFormulario(){
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TelaEmprestimo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
 
+        campoNome.setText("");
+        telaUsuarioMensagem.setText("");
+        
+        this.setVisible(false);
+    }
+    
+    private void limparFormulario(){
+        campoNome.setText("");
+        telaUsuarioMensagem.setText("");
+        
+        this.setVisible(false);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,22 +57,23 @@ public class TelaUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        telaUsuarioTitulo = new javax.swing.JLabel();
+        telaUsuarioNome = new javax.swing.JLabel();
         campoNome = new javax.swing.JTextField();
         botaoCancelar = new javax.swing.JButton();
         botaoCadastrar = new javax.swing.JButton();
+        telaUsuarioMensagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela Usuário");
         setBackground(new java.awt.Color(204, 204, 204));
         setName("telaUsuario"); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Tela Usuário");
+        telaUsuarioTitulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        telaUsuarioTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        telaUsuarioTitulo.setText("Tela Usuário");
 
-        jLabel3.setText("Nome:");
+        telaUsuarioNome.setText("Nome:");
 
         botaoCancelar.setText("Cancelar");
         botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -58,56 +83,75 @@ public class TelaUsuario extends javax.swing.JFrame {
         });
 
         botaoCadastrar.setText("Cadastrar");
+        botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(telaUsuarioTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(botaoCancelar)
-                        .addGap(66, 66, 66)
-                        .addComponent(botaoCadastrar))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
-                        .addComponent(jLabel3)
+                        .addComponent(telaUsuarioNome)
                         .addGap(45, 45, 45)
-                        .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(telaUsuarioMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botaoCancelar)
+                                .addGap(66, 66, 66)
+                                .addComponent(botaoCadastrar)))))
                 .addContainerGap(92, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel1)
+                .addComponent(telaUsuarioTitulo)
                 .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(telaUsuarioNome)
                     .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoCancelar)
                     .addComponent(botaoCadastrar))
-                .addGap(41, 41, 41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(telaUsuarioMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
-       this.setVisible(false);
+       limparFormulario();
     }//GEN-LAST:event_botaoCancelarActionPerformed
+
+    private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
+        Usuario usuario = new Usuario();
+        usuario.setNome(campoNome.getText());
+        String mensagem = this.ctrlPrincipal.getCtrlUsuario().add(usuario);
+        telaUsuarioMensagem.setText(mensagem);
+        setarTempoLimparFormulario();
+    }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCadastrar;
     private javax.swing.JButton botaoCancelar;
     private javax.swing.JTextField campoNome;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel telaUsuarioMensagem;
+    private javax.swing.JLabel telaUsuarioNome;
+    private javax.swing.JLabel telaUsuarioTitulo;
     // End of variables declaration//GEN-END:variables
 }

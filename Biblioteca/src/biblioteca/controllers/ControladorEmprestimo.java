@@ -29,9 +29,9 @@ public class ControladorEmprestimo {
         this.biblioteca = biblioteca;
     }
 
-    public String emprestar(Livro livro, Usuario usuario) {
+    public String emprestar(Livro livro, Usuario usuario, Date dataEmprestimo) {
         try {
-            Emprestimo emprestimo = new Emprestimo(usuario, livro, new Date());
+            Emprestimo emprestimo = new Emprestimo(usuario, livro, dataEmprestimo);
             emprestimo.emprestar(this.biblioteca, emprestimo);
             return "Livro emprestado com sucesso";
         } catch (LivroNaoEncontradoException e) {

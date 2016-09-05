@@ -50,5 +50,11 @@ public class ControladorUsuario {
     public void setBiblioteca(Biblioteca biblioteca) {
         this.biblioteca = biblioteca;
     }
+    
+    public Usuario instanciarUsuario(int codUsuario){
+        Usuario usuario = new Usuario();
+        usuario.setCodigo(codUsuario);
+        return usuario;
+    }
 
 }

@@ -6,6 +6,12 @@
 package biblioteca.views;
 
 import biblioteca.controllers.ControladorPrincipal;
+import biblioteca.entitys.Livro;
+import biblioteca.entitys.Usuario;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,6 +37,28 @@ public class TelaEmprestimo extends javax.swing.JFrame {
     public void setCtrlPrincipal(ControladorPrincipal ctrlPrincipal) {
         this.ctrlPrincipal = ctrlPrincipal;
     }
+    
+    private void setarTempoLimparFormulario(){
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TelaEmprestimo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        campoCodigoLivro.setText("");
+        campoCodigoUsuario.setText("");
+        telaEmprestimoMensagem.setText("");
+        
+        this.setVisible(false);
+    }
+    
+    private void limparFormulario(){
+        campoCodigoLivro.setText("");
+        campoCodigoUsuario.setText("");
+        telaEmprestimoMensagem.setText("");
+        
+        this.setVisible(false);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,34 +69,40 @@ public class TelaEmprestimo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        telaEmprestimoTitulo = new javax.swing.JLabel();
+        telaEmpretimoCodigoUsuario = new javax.swing.JLabel();
         campoCodigoUsuario = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        telaEmprestimoCodigoLivro = new javax.swing.JLabel();
         campoCodigoLivro = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        campoDataEmprestimo = new javax.swing.JTextField();
+        telaEmprestimoDataEmprestimo = new javax.swing.JLabel();
         botaoCadastrar = new javax.swing.JButton();
         botaoCancelar = new javax.swing.JButton();
+        calandarioTelaEmprestimo = new com.michaelbaranov.microba.calendar.CalendarPane();
+        telaEmprestimoMensagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Tela Emprestimo");
+        telaEmprestimoTitulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        telaEmprestimoTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        telaEmprestimoTitulo.setText("Tela Emprestimo");
 
-        jLabel2.setText("Código Usuário:");
+        telaEmpretimoCodigoUsuario.setText("Código Usuário:");
 
         campoCodigoUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jLabel3.setText("Código Livro:");
+        telaEmprestimoCodigoLivro.setText("Código Livro:");
 
         campoCodigoLivro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jLabel4.setText("Data Emprestimo");
-
-        campoDataEmprestimo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        telaEmprestimoDataEmprestimo.setText("Data Emprestimo: ");
 
         botaoCadastrar.setText("Cadastrar");
+        botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCadastrarActionPerformed(evt);
+            }
+        });
 
         botaoCancelar.setText("Cancelar");
         botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -81,74 +115,105 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(campoCodigoUsuario))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(36, 36, 36)
-                                .addComponent(campoCodigoLivro))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(campoDataEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 97, Short.MAX_VALUE)
-                .addComponent(botaoCancelar)
-                .addGap(67, 67, 67)
-                .addComponent(botaoCadastrar)
-                .addGap(80, 80, 80))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(telaEmpretimoCodigoUsuario)
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(telaEmprestimoCodigoLivro)
+                        .addGap(31, 31, 31)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(campoCodigoLivro)
+                    .addComponent(campoCodigoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(telaEmprestimoDataEmprestimo)
+                .addGap(18, 18, 18)
+                .addComponent(calandarioTelaEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(telaEmprestimoTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(telaEmprestimoMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(botaoCancelar)
+                        .addGap(67, 67, 67)
+                        .addComponent(botaoCadastrar)))
+                .addGap(159, 159, 159))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(campoCodigoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addComponent(telaEmprestimoTitulo)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(campoCodigoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(campoDataEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(telaEmpretimoCodigoUsuario)
+                            .addComponent(campoCodigoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(telaEmprestimoDataEmprestimo))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(telaEmprestimoCodigoLivro)
+                            .addComponent(campoCodigoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(calandarioTelaEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoCadastrar)
                     .addComponent(botaoCancelar))
-                .addGap(31, 31, 31))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(telaEmprestimoMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
-        this.setVisible(false);
+        limparFormulario();
     }//GEN-LAST:event_botaoCancelarActionPerformed
+
+    private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
+        int codigoLivro = Integer.parseInt(this.campoCodigoLivro.getText());
+        int codigoUsuario = Integer.parseInt(this.campoCodigoUsuario.getText());
+        Date dataEmprestimo = this.calandarioTelaEmprestimo.getDate();
+        
+        Livro livro = new Livro();
+        livro.setCodigo(codigoLivro);
+        livro = this.ctrlPrincipal.getCtrlLivro().find(livro);
+        
+        Usuario usuario = new Usuario();
+        usuario.setCodigo(codigoUsuario);
+        usuario = this.ctrlPrincipal.getCtrlUsuario().find(usuario);
+        
+        if(livro != null && usuario != null){ 
+            String mensagem = this.ctrlPrincipal.getCtrlEmprestimo().emprestar(livro, usuario, dataEmprestimo);
+            telaEmprestimoMensagem.setText(mensagem);
+            setarTempoLimparFormulario();
+        } else {
+            telaEmprestimoMensagem.setText("Não foi possivel realizar o emprestimo!");
+            setarTempoLimparFormulario();
+        }
+    }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCadastrar;
     private javax.swing.JButton botaoCancelar;
+    private com.michaelbaranov.microba.calendar.CalendarPane calandarioTelaEmprestimo;
     private javax.swing.JTextField campoCodigoLivro;
     private javax.swing.JTextField campoCodigoUsuario;
-    private javax.swing.JTextField campoDataEmprestimo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel telaEmprestimoCodigoLivro;
+    private javax.swing.JLabel telaEmprestimoDataEmprestimo;
+    private javax.swing.JLabel telaEmprestimoMensagem;
+    private javax.swing.JLabel telaEmprestimoTitulo;
+    private javax.swing.JLabel telaEmpretimoCodigoUsuario;
     // End of variables declaration//GEN-END:variables
 }

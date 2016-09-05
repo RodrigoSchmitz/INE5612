@@ -50,5 +50,11 @@ public class ControladorLivro {
     public void setBiblioteca(Biblioteca biblioteca) {
         this.biblioteca = biblioteca;
     }
+    
+    public Livro instanciarLivro(int codLivro){
+        Livro livro = new Livro();
+        livro.setCodigo(codLivro);
+        return livro;
+    }
 
 }

@@ -6,6 +6,10 @@
 package biblioteca.views;
 
 import biblioteca.controllers.ControladorPrincipal;
+import biblioteca.entitys.Livro;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,7 +35,26 @@ public class TelaLivro extends javax.swing.JFrame {
     public void setCtrlPrincipal(ControladorPrincipal ctrlPrincipal) {
         this.ctrlPrincipal = ctrlPrincipal;
     }
-
+    
+    private void setarTempoLimparFormulario(){
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TelaEmprestimo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        campoTitulo.setText("");
+        telaLivroMensagem.setText("");
+        
+        this.setVisible(false);
+    }
+    
+    private void limparFormulario(){
+        campoTitulo.setText("");
+        telaLivroMensagem.setText("");
+        
+        this.setVisible(false);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,9 +66,10 @@ public class TelaLivro extends javax.swing.JFrame {
 
         botaoCancelar = new javax.swing.JButton();
         botaoCadastrar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        telaLivroTitulo = new javax.swing.JLabel();
+        telaLivroCampoTitulo = new javax.swing.JLabel();
         campoTitulo = new javax.swing.JTextField();
+        telaLivroMensagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -57,62 +81,81 @@ public class TelaLivro extends javax.swing.JFrame {
         });
 
         botaoCadastrar.setText("Cadastrar");
+        botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCadastrarActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Tela Livro");
+        telaLivroTitulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        telaLivroTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        telaLivroTitulo.setText("Tela Livro");
 
-        jLabel3.setText("Titulo:");
+        telaLivroCampoTitulo.setText("Titulo:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(138, 138, 138))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(jLabel3)
-                        .addGap(45, 45, 45)
-                        .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(telaLivroCampoTitulo)
+                                .addGap(45, 45, 45)
+                                .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(telaLivroMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(botaoCancelar)
+                                    .addGap(66, 66, 66)
+                                    .addComponent(botaoCadastrar))))
+                        .addGap(0, 82, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(botaoCancelar)
-                        .addGap(66, 66, 66)
-                        .addComponent(botaoCadastrar)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(telaLivroTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel1)
+                .addComponent(telaLivroTitulo)
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(telaLivroCampoTitulo)
                     .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoCancelar)
                     .addComponent(botaoCadastrar))
-                .addGap(41, 41, 41))
+                .addGap(18, 18, 18)
+                .addComponent(telaLivroMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
-        this.setVisible(false);
+        limparFormulario();
     }//GEN-LAST:event_botaoCancelarActionPerformed
+
+    private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
+        Livro livro = new Livro();
+        livro.setNome(campoTitulo.getText());
+        String mensagem = this.ctrlPrincipal.getCtrlLivro().add(livro);
+        telaLivroMensagem.setText(mensagem);
+        setarTempoLimparFormulario();
+    }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCadastrar;
     private javax.swing.JButton botaoCancelar;
     private javax.swing.JTextField campoTitulo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel telaLivroCampoTitulo;
+    private javax.swing.JLabel telaLivroMensagem;
+    private javax.swing.JLabel telaLivroTitulo;
     // End of variables declaration//GEN-END:variables
 }
