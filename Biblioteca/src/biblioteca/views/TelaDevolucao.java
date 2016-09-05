@@ -77,7 +77,7 @@ public class TelaDevolucao extends javax.swing.JFrame {
         telaDevolucaoCodigoLivro = new javax.swing.JLabel();
         botaoCancelar = new javax.swing.JButton();
         botaoCadastrar = new javax.swing.JButton();
-        calendarPane1 = new com.michaelbaranov.microba.calendar.CalendarPane();
+        calandarioTelaEmprestimo = new com.michaelbaranov.microba.calendar.CalendarPane();
         telaDevolucaoMensagem = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
@@ -132,7 +132,7 @@ public class TelaDevolucao extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(telaDevolucaoDataEmprestimo)
                 .addGap(18, 18, 18)
-                .addComponent(calendarPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(calandarioTelaEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -156,7 +156,7 @@ public class TelaDevolucao extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(calendarPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(calandarioTelaEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,7 +214,7 @@ public class TelaDevolucao extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCadastrar;
     private javax.swing.JButton botaoCancelar;
-    private com.michaelbaranov.microba.calendar.CalendarPane calendarPane1;
+    private com.michaelbaranov.microba.calendar.CalendarPane calandarioTelaEmprestimo;
     private javax.swing.JTextField campoCodigoLivro;
     private javax.swing.JTextField campoCodigoUsuario;
     private javax.swing.JTextField jTextField1;

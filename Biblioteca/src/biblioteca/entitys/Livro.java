@@ -22,7 +22,7 @@ public class Livro {
     private Integer codigo;
 
     public Livro add(Livro livro, List<Livro> livros) {
-        if (livros.isEmpty()) {
+        if (!livros.isEmpty()) {
             livro.setCodigo(livros.get(livros.size() - 1).getCodigo() + 1);
         } else {
             livro.setCodigo(1);

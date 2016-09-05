@@ -15,10 +15,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     private ControladorPrincipal ctrlPrincipal;
     
-    TelaDevolucao tD = new TelaDevolucao(ctrlPrincipal);
-    TelaEmprestimo tE = new TelaEmprestimo(ctrlPrincipal);
-    TelaUsuario tU = new TelaUsuario(ctrlPrincipal);
-    TelaLivro tL = new TelaLivro(ctrlPrincipal);
+    TelaDevolucao tD;
+    TelaEmprestimo tE;
+    TelaUsuario tU;
+    TelaLivro tL;
     
 
     /**
@@ -26,6 +26,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         this.ctrlPrincipal = new ControladorPrincipal();
+        tD = new TelaDevolucao(ctrlPrincipal);
+        tE = new TelaEmprestimo(ctrlPrincipal);
+        tU = new TelaUsuario(ctrlPrincipal);
+        tL = new TelaLivro(ctrlPrincipal);
         tD.setVisible(false);
         tE.setVisible(false);
         tL.setVisible(false);

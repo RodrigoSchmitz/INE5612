@@ -6,6 +6,7 @@
 
 package biblioteca.entitys;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,11 +18,11 @@ import java.util.List;
  */
 public class Biblioteca {
 
-    private List<Livro> livros;
+    private List<Livro> livros = new ArrayList<Livro>();
     
-    private List<Usuario> usuarios;
+    private List<Usuario> usuarios = new ArrayList<Usuario>();
     
-    private List<Emprestimo> emprestimos;
+    private List<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
 
     public List<Livro> getLivros() {
         return livros;
