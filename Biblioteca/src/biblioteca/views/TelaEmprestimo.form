@@ -12,6 +12,10 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowStateChanged" listener="java.awt.event.WindowStateListener" parameters="java.awt.event.WindowEvent" handler="formWindowStateChanged"/>
+    <EventHandler event="windowGainedFocus" listener="java.awt.event.WindowFocusListener" parameters="java.awt.event.WindowEvent" handler="formWindowGainedFocus"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -27,44 +31,72 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="telaEmpretimoCodigoUsuario" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="telaEmprestimoCodigoLivro" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="campoCodigoLivro" max="32767" attributes="0"/>
-                  <Component id="campoCodigoUsuario" pref="85" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
-              <Component id="telaEmprestimoDataEmprestimo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Component id="calandarioTelaEmprestimo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="telaEmprestimoTitulo" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="telaEmprestimoMensagem" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="telaEmprestimoMensagem" min="-2" pref="293" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="botaoCancelar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                      <Component id="botaoCadastrar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="telaEmpretimoCodigoUsuario" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Component id="usuarioNomeLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="usuarioCodigoLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="usuarioCPFLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="userCombo" min="-2" max="-2" attributes="0"/>
+                                  <Component id="usuarioCodigoText" min="-2" max="-2" attributes="0"/>
+                                  <Component id="usuarioNomeText" min="-2" max="-2" attributes="0"/>
+                                  <Component id="usuarioCPFText" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="telaEmprestimoCodigoLivro" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="bookCombo" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="livroTituloLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="livroTituloText" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="livroEmprestadoLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="livroEmprestadoText" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="livroCodigoLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="livroCodigoText" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="botaoCancelar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="botaoCadastrar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="calandarioTelaEmprestimo" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,28 +107,58 @@
               <Component id="telaEmprestimoTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="telaEmpretimoCodigoUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campoCodigoUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="telaEmprestimoDataEmprestimo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="userCombo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="usuarioCodigoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="usuarioCodigoText" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="usuarioNomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="usuarioNomeText" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="usuarioCPFLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="usuarioCPFText" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="telaEmprestimoCodigoLivro" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campoCodigoLivro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bookCombo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="livroCodigoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="livroCodigoText" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="livroTituloLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="livroTituloText" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="livroEmprestadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="livroEmprestadoText" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="telaEmprestimoMensagem" min="-2" pref="23" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="calandarioTelaEmprestimo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="botaoCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botaoCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="calandarioTelaEmprestimo" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="botaoCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botaoCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="telaEmprestimoMensagem" min="-2" pref="23" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -114,32 +176,17 @@
     </Component>
     <Component class="javax.swing.JLabel" name="telaEmpretimoCodigoUsuario">
       <Properties>
-        <Property name="text" type="java.lang.String" value="C&#xf3;digo Usu&#xe1;rio:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="campoCodigoUsuario">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Usu&#xe1;rio:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="telaEmprestimoCodigoLivro">
       <Properties>
-        <Property name="text" type="java.lang.String" value="C&#xf3;digo Livro:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="campoCodigoLivro">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="telaEmprestimoDataEmprestimo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Data Emprestimo: "/>
+        <Property name="text" type="java.lang.String" value="Livro:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="botaoCadastrar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cadastrar"/>
+        <Property name="text" type="java.lang.String" value="Realizar empr&#xe9;stimo"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCadastrarActionPerformed"/>
@@ -156,6 +203,74 @@
     <Component class="com.michaelbaranov.microba.calendar.CalendarPane" name="calandarioTelaEmprestimo">
     </Component>
     <Component class="javax.swing.JLabel" name="telaEmprestimoMensagem">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="userCombo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new DefaultComboBoxModel(ctrlPrincipal.getBiblioteca().getUsuarios().toArray())" type="code"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userComboActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="bookCombo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new DefaultComboBoxModel(ctrlPrincipal.getBiblioteca().getLivros().toArray())" type="code"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bookComboActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="usuarioCodigoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="usuarioCodigoText">
+    </Component>
+    <Component class="javax.swing.JLabel" name="usuarioNomeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nome:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="usuarioNomeText">
+    </Component>
+    <Component class="javax.swing.JLabel" name="usuarioCPFLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CPF:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="usuarioCPFText">
+    </Component>
+    <Component class="javax.swing.JLabel" name="livroTituloLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="T&#xed;tulo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="livroTituloText">
+    </Component>
+    <Component class="javax.swing.JLabel" name="livroEmprestadoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Em uso:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="livroEmprestadoText">
+    </Component>
+    <Component class="javax.swing.JLabel" name="livroCodigoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="livroCodigoText">
     </Component>
   </SubComponents>
 </Form>

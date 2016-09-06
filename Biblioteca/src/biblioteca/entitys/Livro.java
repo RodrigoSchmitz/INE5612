@@ -20,6 +20,8 @@ public class Livro {
     private String nome;
     
     private Integer codigo;
+    
+    private boolean emprestado;
 
     public Livro add(Livro livro, List<Livro> livros) {
         if (!livros.isEmpty()) {
@@ -73,6 +75,19 @@ public class Livro {
 
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
+    }
+
+    public boolean isEmprestado() {
+        return emprestado;
+    }
+
+    public void setEmprestado(boolean emprestado) {
+        this.emprestado = emprestado;
+    }
+
+    @Override
+    public String toString() {
+        return this.codigo + " - " + this.nome;
     }
     
 }

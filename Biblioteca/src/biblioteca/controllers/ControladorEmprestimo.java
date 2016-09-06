@@ -11,7 +11,8 @@ import biblioteca.entitys.Emprestimo;
 import biblioteca.entitys.Livro;
 import biblioteca.entitys.Usuario;
 import biblioteca.exceptions.EmprestimoNaoEncontradoException;
-import biblioteca.exceptions.LivroNaoEncontradoException;
+import biblioteca.exceptions.EmprestimoVazioException;
+import biblioteca.exceptions.LivroEmprestadoException;
 import java.util.Date;
 
 /**
@@ -34,15 +35,17 @@ public class ControladorEmprestimo {
             Emprestimo emprestimo = new Emprestimo(usuario, livro, dataEmprestimo);
             emprestimo.emprestar(this.biblioteca, emprestimo);
             return "Livro emprestado com sucesso";
-        } catch (LivroNaoEncontradoException e) {
+        } catch (LivroEmprestadoException e) {
+            return e.getMessage();
+        } catch (EmprestimoVazioException e) {
             return e.getMessage();
         }
         
     }
     
-    public String devolver(Emprestimo emprestimo) throws EmprestimoNaoEncontradoException {
+    public String devolver(Emprestimo emprestimo, Date dataDevolucao) throws EmprestimoNaoEncontradoException {
         try {
-            emprestimo.devolver(this.biblioteca, emprestimo);
+            emprestimo.devolver(this.biblioteca, emprestimo, dataDevolucao);
             return "Livro devolvido com sucesso";
         } catch (EmprestimoNaoEncontradoException e) {
             return e.getMessage();

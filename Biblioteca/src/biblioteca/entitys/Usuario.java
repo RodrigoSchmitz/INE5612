@@ -6,6 +6,8 @@
 
 package biblioteca.entitys;
 
+import biblioteca.exceptions.CpfCadastradoException;
+import biblioteca.exceptions.UsuarioVazioException;
 import java.util.List;
 
 /**
@@ -20,15 +22,26 @@ public class Usuario {
     private String nome;
     
     private Integer codigo;
+    
+    private String cpf;
 
-    public Usuario add(Usuario usuario, List<Usuario> usuarios) {
-        if (!usuarios.isEmpty()) {
-            usuario.setCodigo(usuarios.get(usuarios.size() - 1).getCodigo() + 1);
+    public Usuario add(Usuario usuario, List<Usuario> usuarios) throws UsuarioVazioException, CpfCadastradoException {
+        if ((usuario.getCpf() != null && !("").equals(usuario.getCpf()))
+                && (usuario.getNome() != null && !("").equals(usuario.getNome()))) {
+            if (!usuarios.isEmpty()) {
+                if (checkCPF(usuario, usuarios)) {
+                    throw new CpfCadastradoException("CPF já cadastrado");
+                }
+                usuario.setCodigo(usuarios.get(usuarios.size() - 1).getCodigo() + 1);
+            } else {
+                usuario.setCodigo(1);
+            }
+            usuarios.add(usuario);
+            return usuario;
         } else {
-            usuario.setCodigo(1);
+            throw new UsuarioVazioException("Usuario com campos vazios.");
         }
-        usuarios.add(usuario);
-        return usuario;
+        
     }
     
     public Usuario find(Integer codigo, List<Usuario> usuarios) {
@@ -60,6 +73,15 @@ public class Usuario {
         }
     }
     
+    public boolean checkCPF(Usuario usuario, List<Usuario> usuarios) {
+        for (Usuario u : usuarios) {
+            if (usuario.getCpf().equals(u.getCpf())) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -74,6 +96,19 @@ public class Usuario {
 
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    @Override
+    public String toString() {
+        return this.codigo + " - " + this.nome;
     }
     
 }

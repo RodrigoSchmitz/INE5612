@@ -25,8 +25,13 @@ public class ControladorUsuario {
     }
     
     public String add(Usuario usuario) {
-        usuario.add(usuario, this.biblioteca.getUsuarios());
-        return "Usuario adicionado com sucesso.";
+        try {
+            usuario.add(usuario, this.biblioteca.getUsuarios());
+            return "Usuario adicionado com sucesso.";
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+        
     }
 
     public Usuario find(Usuario usuario) {

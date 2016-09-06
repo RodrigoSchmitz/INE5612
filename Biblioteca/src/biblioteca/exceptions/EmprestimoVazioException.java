@@ -7,16 +7,16 @@
 package biblioteca.exceptions;
 
 /**
- * Classe <b>LivroNaoEncontradoException</b>
+ * Classe <b>EmprestimoVazioException</b>
  * 
  * Essa Classe ...
  * 
  * @author Felipe Di Bernardi S Thiago
  */
-public class LivroNaoEncontradoException extends RuntimeException {
+public class EmprestimoVazioException extends RuntimeException {
 
-    public LivroNaoEncontradoException(String message) {
+    public EmprestimoVazioException(String message) {
         super(message);
     }
-
+    
 }

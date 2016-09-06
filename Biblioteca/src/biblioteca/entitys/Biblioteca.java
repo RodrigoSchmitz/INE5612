@@ -18,11 +18,11 @@ import java.util.List;
  */
 public class Biblioteca {
 
-    private List<Livro> livros = new ArrayList<Livro>();
+    private List<Livro> livros = new ArrayList<>();
     
-    private List<Usuario> usuarios = new ArrayList<Usuario>();
+    private List<Usuario> usuarios = new ArrayList<>();
     
-    private List<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
+    private List<Emprestimo> emprestimos = new ArrayList<>();
 
     public List<Livro> getLivros() {
         return livros;

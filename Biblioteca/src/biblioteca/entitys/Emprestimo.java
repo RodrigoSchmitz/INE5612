@@ -7,7 +7,8 @@
 package biblioteca.entitys;
 
 import biblioteca.exceptions.EmprestimoNaoEncontradoException;
-import biblioteca.exceptions.LivroNaoEncontradoException;
+import biblioteca.exceptions.EmprestimoVazioException;
+import biblioteca.exceptions.LivroEmprestadoException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -26,6 +27,8 @@ public class Emprestimo {
     
     private Date dataEmprestimo;
     
+    private Date dataMaximaDevolucao;
+    
     private Date dataDevolucao;
 
     public Emprestimo(Usuario usuario, Livro livro, Date dataEmprestimo) {
@@ -35,22 +38,26 @@ public class Emprestimo {
         Calendar dataDevolucao = Calendar.getInstance();
         dataDevolucao.setTime(dataEmprestimo);
         dataDevolucao.add(Calendar.WEEK_OF_YEAR, 1);
-        this.dataDevolucao = dataDevolucao.getTime();
+        this.dataMaximaDevolucao = dataDevolucao.getTime();
     }
     
-    public void emprestar(Biblioteca biblioteca, Emprestimo emprestimo) throws LivroNaoEncontradoException {
-        if (biblioteca.getLivros().contains(emprestimo.getLivro())) {
+    public void emprestar(Biblioteca biblioteca, Emprestimo emprestimo) throws LivroEmprestadoException, EmprestimoVazioException {
+        if (emprestimo.getLivro() == null || emprestimo.getUsuario() == null || emprestimo.getDataEmprestimo() == null) {
+            throw new EmprestimoVazioException("Campos não preenchidos.");
+        }
+        if (!emprestimo.getLivro().isEmprestado()) {
             biblioteca.getEmprestimos().add(emprestimo);
-            biblioteca.getLivros().remove(emprestimo.getLivro());
+            emprestimo.getLivro().setEmprestado(true);
         } else {
-            throw new LivroNaoEncontradoException("Livro não encontrado");
+            throw new LivroEmprestadoException("Livro já emprestado");
         }
     }
     
-    public void devolver(Biblioteca biblioteca, Emprestimo emprestimo) throws EmprestimoNaoEncontradoException {
+    public void devolver(Biblioteca biblioteca, Emprestimo emprestimo, Date dataDevolucao) 
+            throws EmprestimoNaoEncontradoException {
         if (biblioteca.getEmprestimos().contains(emprestimo)) {
-            biblioteca.getEmprestimos().remove(emprestimo);
-            biblioteca.getLivros().add(emprestimo.getLivro());
+            emprestimo.setDataDevolucao(dataDevolucao);
+            emprestimo.getLivro().setEmprestado(false);
         } else {
             throw new EmprestimoNaoEncontradoException("Emprestimo não encontrado");
         }
@@ -80,12 +87,25 @@ public class Emprestimo {
         this.dataEmprestimo = dataEmprestimo;
     }
 
+    public Date getDataMaximaDevolucao() {
+        return dataMaximaDevolucao;
+    }
+
+    public void setDataMaximaDevolucao(Date dataMaximaDevolucao) {
+        this.dataMaximaDevolucao = dataMaximaDevolucao;
+    }
+
     public Date getDataDevolucao() {
         return dataDevolucao;
     }
 
     public void setDataDevolucao(Date dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
+    }
+
+    @Override
+    public String toString() {
+        return this.livro.getNome();
     }
     
 }
