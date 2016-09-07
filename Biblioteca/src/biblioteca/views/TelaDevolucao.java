@@ -40,21 +40,11 @@ public class TelaDevolucao extends javax.swing.JFrame {
     }
     
     private void setarTempoLimparFormulario(){
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(TelaEmprestimo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         this.dataEmprestimoText.setText("");
         this.dataMaxDevolText.setText("");
         this.usuarioCPFText.setText("");
         this.usuarioNomeText.setText("");
         this.livroTituloText.setText("");
-        
-        telaDevolucaoMensagem.setText("");
-        
-        this.setVisible(false);
     }
     
     private void limparFormulario(){
@@ -109,7 +99,7 @@ public class TelaDevolucao extends javax.swing.JFrame {
 
         telaDevolucaoDataEmprestimo.setText("Data Emprestimo:");
 
-        botaoCancelar.setText("Cancelar");
+        botaoCancelar.setText("Voltar");
         botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCancelarActionPerformed(evt);
@@ -122,6 +112,8 @@ public class TelaDevolucao extends javax.swing.JFrame {
                 botaoCadastrarActionPerformed(evt);
             }
         });
+
+        telaDevolucaoMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         emprestimosLabel.setText("Emprestimos:");
 
@@ -152,9 +144,6 @@ public class TelaDevolucao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(telaDevolucaoTItulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
@@ -182,17 +171,11 @@ public class TelaDevolucao extends javax.swing.JFrame {
                             .addComponent(dataMaxDevolLabel))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(telaDevolucaoMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(96, 96, 96))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(botaoCancelar)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(botaoCadastrar)
-                                        .addGap(131, 131, 131)))
-                                .addGap(137, 137, 137))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                                .addComponent(botaoCancelar)
+                                .addGap(28, 28, 28)
+                                .addComponent(botaoCadastrar)
+                                .addGap(268, 268, 268))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -203,7 +186,12 @@ public class TelaDevolucao extends javax.swing.JFrame {
                                         .addComponent(dataEmprestimoText)))
                                 .addGap(109, 109, 109)
                                 .addComponent(calandarioTelaEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(80, 80, 80))))))
+                                .addGap(80, 80, 80))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(telaDevolucaoMensagem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(telaDevolucaoTItulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,9 +205,7 @@ public class TelaDevolucao extends javax.swing.JFrame {
                         .addGap(67, 67, 67)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botaoCancelar)
-                            .addComponent(botaoCadastrar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(telaDevolucaoMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+                            .addComponent(botaoCadastrar)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -230,7 +216,7 @@ public class TelaDevolucao extends javax.swing.JFrame {
                             .addComponent(telaDevolucaoDataEmprestimo)
                             .addComponent(dataEmprestimoText, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dataMaxDevolLabel)
                             .addComponent(dataMaxDevolText))
                         .addGap(18, 18, 18)
@@ -240,7 +226,7 @@ public class TelaDevolucao extends javax.swing.JFrame {
                             .addComponent(usuarioNomeLabel)
                             .addComponent(usuarioNomeText))
                         .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(usuarioCPFLabel)
                             .addComponent(usuarioCPFText))
                         .addGap(18, 18, 18)
@@ -248,8 +234,9 @@ public class TelaDevolucao extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(livroTituloLabel)
-                            .addComponent(livroTituloText))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(livroTituloText))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(telaDevolucaoMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
         );
 
         pack();

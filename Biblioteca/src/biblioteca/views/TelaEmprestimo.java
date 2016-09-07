@@ -40,12 +40,6 @@ public class TelaEmprestimo extends javax.swing.JFrame {
     }
     
     private void setarTempoLimparFormulario(){
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(TelaEmprestimo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         bookCombo.setSelectedIndex(-1);
         userCombo.setSelectedIndex(-1);
         this.livroCodigoText.setText("");
@@ -54,9 +48,6 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         this.usuarioCodigoText.setText("");
         this.usuarioNomeText.setText("");
         this.usuarioCPFText.setText("");
-        telaEmprestimoMensagem.setText("");
-        
-        this.setVisible(false);
     }
     
     private void limparFormulario(){
@@ -128,12 +119,14 @@ public class TelaEmprestimo extends javax.swing.JFrame {
             }
         });
 
-        botaoCancelar.setText("Cancelar");
+        botaoCancelar.setText("Voltar");
         botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCancelarActionPerformed(evt);
             }
         });
+
+        telaEmprestimoMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         userCombo.setModel(new DefaultComboBoxModel(ctrlPrincipal.getBiblioteca().getUsuarios().toArray()));
         userCombo.addActionListener(new java.awt.event.ActionListener() {

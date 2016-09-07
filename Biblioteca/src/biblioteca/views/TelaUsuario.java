@@ -29,18 +29,8 @@ public class TelaUsuario extends javax.swing.JFrame {
     }
     
     private void setarTempoLimparFormulario(){
-        try {
-            TimeUnit.SECONDS.sleep(5);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(TelaEmprestimo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-
         campoNome.setText("");
-        this.cpfText.setText("");
-        telaUsuarioMensagem.setText("");
-        
-        this.setVisible(false);
+        cpfText.setText("");
     }
     
     private void limparFormulario(){
@@ -78,7 +68,7 @@ public class TelaUsuario extends javax.swing.JFrame {
 
         telaUsuarioNome.setText("Nome:");
 
-        botaoCancelar.setText("Cancelar");
+        botaoCancelar.setText("Voltar");
         botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCancelarActionPerformed(evt);
@@ -91,6 +81,8 @@ public class TelaUsuario extends javax.swing.JFrame {
                 botaoCadastrarActionPerformed(evt);
             }
         });
+
+        telaUsuarioMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         cpfLabel.setText("CPF:");
 
@@ -108,26 +100,26 @@ public class TelaUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(telaUsuarioTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(telaUsuarioMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(botaoCancelar)
-                        .addGap(18, 18, 18)
-                        .addComponent(botaoCadastrar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(telaUsuarioMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cpfLabel)
-                    .addComponent(telaUsuarioNome))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(campoNome)
-                    .addComponent(cpfText, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botaoCancelar)
+                        .addGap(57, 57, 57)
+                        .addComponent(botaoCadastrar)
+                        .addContainerGap(46, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cpfLabel)
+                            .addComponent(telaUsuarioNome))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(campoNome)
+                            .addComponent(cpfText, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,8 +135,8 @@ public class TelaUsuario extends javax.swing.JFrame {
                     .addComponent(cpfLabel)
                     .addComponent(cpfText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botaoCadastrar, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botaoCadastrar)
                     .addComponent(botaoCancelar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(telaUsuarioMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,12 +151,16 @@ public class TelaUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
-        Usuario usuario = new Usuario();
-        usuario.setNome(campoNome.getText());
-        usuario.setCpf(this.cpfText.getText());
-        String mensagem = this.ctrlPrincipal.getCtrlUsuario().add(usuario);
-        telaUsuarioMensagem.setText(mensagem);
-        setarTempoLimparFormulario();
+        if(!campoNome.getText().equals("") && !cpfText.getText().equals("")){
+            Usuario usuario = new Usuario();
+            usuario.setNome(campoNome.getText());
+            usuario.setCpf(this.cpfText.getText());
+            String mensagem = this.ctrlPrincipal.getCtrlUsuario().add(usuario);
+            telaUsuarioMensagem.setText(mensagem);
+            setarTempoLimparFormulario();
+        }else{
+            telaUsuarioMensagem.setText("Preencha os campos em branco");
+        }
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     private void cpfTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfTextActionPerformed
