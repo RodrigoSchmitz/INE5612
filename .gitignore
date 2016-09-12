@@ -15,6 +15,7 @@ hs_err_pid*
 /Biblioteca/build.xml
 /Biblioteca/build/*
 /Biblioteca/build
+Biblioteca/nbproject/*
 
 /INE5312/Biblioteca/nbproject/*
 */nbproject
