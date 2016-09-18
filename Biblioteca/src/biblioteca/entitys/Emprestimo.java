@@ -30,6 +30,8 @@ public class Emprestimo {
     private Date dataMaximaDevolucao;
     
     private Date dataDevolucao;
+    
+    private Float multa;
 
     public Emprestimo(Usuario usuario, Livro livro, Date dataEmprestimo) {
         this.usuario = usuario;
@@ -40,6 +42,15 @@ public class Emprestimo {
         dataDevolucao.add(Calendar.WEEK_OF_YEAR, 1);
         this.dataMaximaDevolucao = dataDevolucao.getTime();
     }
+
+    public Float getMulta() {
+        return multa;
+    }
+
+    public void setMulta(Float multa) {
+        this.multa = multa;
+    }
+    
     
     public void emprestar(Biblioteca biblioteca, Emprestimo emprestimo) throws LivroEmprestadoException, EmprestimoVazioException {
         if (emprestimo.getLivro() == null || emprestimo.getUsuario() == null || emprestimo.getDataEmprestimo() == null) {
@@ -53,10 +64,11 @@ public class Emprestimo {
         }
     }
     
-    public void devolver(Biblioteca biblioteca, Emprestimo emprestimo, Date dataDevolucao) 
+    public void devolver(Biblioteca biblioteca, Emprestimo emprestimo, Date dataDevolucao, Float multa) 
             throws EmprestimoNaoEncontradoException {
         if (biblioteca.getEmprestimos().contains(emprestimo)) {
             emprestimo.setDataDevolucao(dataDevolucao);
+            emprestimo.setMulta(multa);
             emprestimo.getLivro().setEmprestado(false);
         } else {
             throw new EmprestimoNaoEncontradoException("Emprestimo não encontrado");

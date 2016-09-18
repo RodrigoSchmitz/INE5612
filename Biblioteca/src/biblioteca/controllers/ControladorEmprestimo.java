@@ -43,13 +43,12 @@ public class ControladorEmprestimo {
         
     }
     
-    public String devolver(Emprestimo emprestimo, Date dataDevolucao) throws EmprestimoNaoEncontradoException {
+    public String devolver(Emprestimo emprestimo, Date dataDevolucao, Float multa) throws EmprestimoNaoEncontradoException {
         try {
-            emprestimo.devolver(this.biblioteca, emprestimo, dataDevolucao);
+            emprestimo.devolver(this.biblioteca, emprestimo, dataDevolucao, multa);
             return "Livro devolvido com sucesso";
         } catch (EmprestimoNaoEncontradoException e) {
             return e.getMessage();
         }
-    }
-    
+    }    
 }

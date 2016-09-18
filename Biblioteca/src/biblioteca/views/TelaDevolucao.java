@@ -262,7 +262,8 @@ public class TelaDevolucao extends javax.swing.JFrame {
         
         if (emprestimo != null && emprestimo.getDataDevolucao() == null && this.calandarioTelaEmprestimo.getDate() != null) {
             Date dataDevolucao = this.calandarioTelaEmprestimo.getDate();
-            this.ctrlPrincipal.getCtrlEmprestimo().devolver(emprestimo, dataDevolucao);
+            this.ctrlPrincipal.getCtrlEmprestimo().devolver(emprestimo, dataDevolucao, calc1.getModelCalculator().getResultado());
+            System.out.println(calc1.getModelCalculator().getResultado());
             String mensagem = "";
             telaDevolucaoMensagem.setText(mensagem);
             setarTempoLimparFormulario();
