@@ -17,6 +17,7 @@ public class ModelCalculator implements Serializable {
     private Float primeiroConjunto;
     private Float segundoConjunto;
     private String operador;
+    private Float resultado;
     
     public static final String PROP_SAMPLE_PROPERTY = "Calculadora";
     
@@ -26,6 +27,15 @@ public class ModelCalculator implements Serializable {
     
     public ModelCalculator() {
         propertySupport = new PropertyChangeSupport(this);
+        Calc c = new Calc();
+    }
+
+    public Float getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(Float resultado) {
+        this.resultado = resultado;
     }
     
     public String getSampleProperty() {
@@ -86,6 +96,7 @@ public class ModelCalculator implements Serializable {
                 resposta = primeiroConjunto * segundoConjunto;
                 break;
         }
+        resultado = resposta;
         primeiroConjunto = null;
         segundoConjunto = null;
         operador = null;

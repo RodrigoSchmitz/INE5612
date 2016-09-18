@@ -18,53 +18,59 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="campoResposta" alignment="0" max="32767" attributes="0"/>
           <Component id="campoInputDados" alignment="0" max="32767" attributes="0"/>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="botaoDigito1" pref="94" max="32767" attributes="0"/>
-                          <Component id="botaoDigito0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="botaoDigitoSeparador" max="32767" attributes="0"/>
-                          <Component id="botaoDigito2" min="-2" pref="94" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="botaoDigitoIgual" max="32767" attributes="0"/>
-                          <Component id="botaoDigito3" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="botaoDigito4" pref="94" max="32767" attributes="0"/>
-                          <Component id="botaoDigito7" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="botaoDigito5" min="-2" pref="94" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="botaoDigito6" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="botaoDigito8" min="-2" pref="94" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="botaoDigito9" min="-2" pref="94" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-              </Group>
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="botaoDigitoMultiplicacao" min="-2" pref="94" max="-2" attributes="0"/>
-                  <Component id="botaoDigitoDivide" min="-2" pref="94" max="-2" attributes="0"/>
-                  <Component id="botaoDigitoDiminui" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
-                  <Component id="botaoDigitoSoma" min="-2" pref="94" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="botaoDigito1" pref="94" max="32767" attributes="0"/>
+                                  <Component id="botaoDigito0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="botaoDigitoSeparador" max="32767" attributes="0"/>
+                                  <Component id="botaoDigito2" min="-2" pref="94" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="botaoDigitoIgual" max="32767" attributes="0"/>
+                                  <Component id="botaoDigito3" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="botaoDigito4" pref="94" max="32767" attributes="0"/>
+                                  <Component id="botaoDigito7" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="botaoDigito5" min="-2" pref="94" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="botaoDigito6" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="botaoDigito8" min="-2" pref="94" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="botaoDigito9" min="-2" pref="94" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="botaoDigitoMultiplicacao" min="-2" pref="94" max="-2" attributes="0"/>
+                          <Component id="botaoDigitoDivide" min="-2" pref="94" max="-2" attributes="0"/>
+                          <Component id="botaoDigitoDiminui" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
+                          <Component id="botaoDigitoSoma" min="-2" pref="94" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="mensagensErro" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -102,7 +108,8 @@
                   <Component id="botaoDigito0" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botaoDigitoSoma" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="mensagensErro" pref="27" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -239,6 +246,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoDigitoSomaActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="mensagensErro">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

@@ -5,8 +5,6 @@
  */
 package calculator;
 
-import java.util.Arrays;
-
 /**
  *
  * @author rodrigo
@@ -58,6 +56,7 @@ public class Calc extends javax.swing.JPanel implements java.beans.Customizer {
         botaoDigitoIgual = new javax.swing.JButton();
         botaoDigitoDiminui = new javax.swing.JButton();
         botaoDigitoSoma = new javax.swing.JButton();
+        mensagensErro = new javax.swing.JLabel();
 
         botaoDigito7.setText("7");
         botaoDigito7.addActionListener(new java.awt.event.ActionListener() {
@@ -171,47 +170,53 @@ public class Calc extends javax.swing.JPanel implements java.beans.Customizer {
             }
         });
 
+        mensagensErro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(campoResposta)
             .addComponent(campoInputDados)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botaoDigito1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                            .addComponent(botaoDigito0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botaoDigitoSeparador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botaoDigito2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botaoDigitoIgual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botaoDigito3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botaoDigito4, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                            .addComponent(botaoDigito7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botaoDigito5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botaoDigito6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botaoDigito8, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botaoDigito9, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botaoDigitoMultiplicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoDigitoDivide, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoDigitoDiminui, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoDigitoSoma, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(botaoDigito1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                                    .addComponent(botaoDigito0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(botaoDigitoSeparador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botaoDigito2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(botaoDigitoIgual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botaoDigito3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(botaoDigito4, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                                    .addComponent(botaoDigito7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(botaoDigito5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(botaoDigito6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(botaoDigito8, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(botaoDigito9, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botaoDigitoMultiplicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoDigitoDivide, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoDigitoDiminui, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoDigitoSoma, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(mensagensErro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -244,7 +249,8 @@ public class Calc extends javax.swing.JPanel implements java.beans.Customizer {
                     .addComponent(botaoDigitoSeparador)
                     .addComponent(botaoDigito0)
                     .addComponent(botaoDigitoSoma))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(mensagensErro, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -262,9 +268,15 @@ public class Calc extends javax.swing.JPanel implements java.beans.Customizer {
 
     private void botaoDigitoDivideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDigitoDivideActionPerformed
         if(modelCalculator.getPrimeiroConjunto() == null){
-            modelCalculator.setPrimeiroConjunto(Float.parseFloat(campoInputDados.getText()));
-            campoInputDados.setText(campoInputDados.getText() + " / ");
-            modelCalculator.setOperador("/");
+            try{
+                modelCalculator.setPrimeiroConjunto(Float.parseFloat(campoInputDados.getText()));
+                campoInputDados.setText(campoInputDados.getText() + " / ");
+                modelCalculator.setOperador("/");
+            } catch(NumberFormatException nfe){
+                mensagensErro.setText("Erro de sintaxe");
+            }
+        }else{
+            mensagensErro.setText("Porfavor insira o primeiro conjunto");
         }
     }//GEN-LAST:event_botaoDigitoDivideActionPerformed
 
@@ -282,9 +294,15 @@ public class Calc extends javax.swing.JPanel implements java.beans.Customizer {
 
     private void botaoDigitoMultiplicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDigitoMultiplicacaoActionPerformed
         if(modelCalculator.getPrimeiroConjunto() == null){
-            modelCalculator.setPrimeiroConjunto(Float.parseFloat(campoInputDados.getText()));
-            campoInputDados.setText(campoInputDados.getText() + " * ");
-            modelCalculator.setOperador("*");
+            try{
+                modelCalculator.setPrimeiroConjunto(Float.parseFloat(campoInputDados.getText()));
+                campoInputDados.setText(campoInputDados.getText() + " * ");
+                modelCalculator.setOperador("*");
+            } catch(NumberFormatException nfe){
+                mensagensErro.setText("Erro de sintaxe");
+            }
+        }else{
+            mensagensErro.setText("Porfavor insira o primeiro conjunto");
         }
     }//GEN-LAST:event_botaoDigitoMultiplicacaoActionPerformed
 
@@ -302,9 +320,15 @@ public class Calc extends javax.swing.JPanel implements java.beans.Customizer {
 
     private void botaoDigitoDiminuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDigitoDiminuiActionPerformed
         if(modelCalculator.getPrimeiroConjunto() == null){
-            modelCalculator.setPrimeiroConjunto(Float.parseFloat(campoInputDados.getText()));
-            campoInputDados.setText(campoInputDados.getText() + " - ");
-            modelCalculator.setOperador("-");
+            try{
+                modelCalculator.setPrimeiroConjunto(Float.parseFloat(campoInputDados.getText()));
+                campoInputDados.setText(campoInputDados.getText() + " - ");
+                modelCalculator.setOperador("-");
+            } catch(NumberFormatException nfe){
+                mensagensErro.setText("Erro de sintaxe");
+            }
+        }else{
+            mensagensErro.setText("Porfavor insira o primeiro conjunto");
         }
     }//GEN-LAST:event_botaoDigitoDiminuiActionPerformed
 
@@ -314,18 +338,29 @@ public class Calc extends javax.swing.JPanel implements java.beans.Customizer {
 
     private void botaoDigitoIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDigitoIgualActionPerformed
         if(modelCalculator.getPrimeiroConjunto() != null){
-            modelCalculator.setSegundoConjunto(
-                    Float.parseFloat(
-                            campoInputDados.getText().replace(" ", "")
-                                    .substring(
-                                            campoInputDados.getText()
-                                                    .replace(" ", "")
-                                                    .indexOf(modelCalculator.getOperador())
-                                    ).replaceAll("\\"+modelCalculator.getOperador(), " ")));
-            System.out.println(modelCalculator.getSegundoConjunto());
-            String resultado = modelCalculator.calcular();
-            campoResposta.setText(campoInputDados.getText() + " = " + resultado);
-            campoInputDados.setText("");
+            String segundoConjunto = "";
+            try{
+                segundoConjunto = 
+                                campoInputDados.getText().replace(" ", "")
+                                        .substring(
+                                                campoInputDados.getText()
+                                                        .replace(" ", "")
+                                                        .indexOf(modelCalculator.getOperador())
+                                        ).replaceAll("\\"+modelCalculator.getOperador(), " ")
+                                        .replaceAll(" ", "");
+            } catch(NumberFormatException nfe){
+                mensagensErro.setText("Erro de sintaxe");
+            }
+            if(!segundoConjunto.equals("")){
+                modelCalculator.setSegundoConjunto(Float.parseFloat(segundoConjunto));
+                String resultado = modelCalculator.calcular();
+                campoResposta.setText(campoInputDados.getText() + " = " + resultado);
+                campoInputDados.setText("");
+            } else{
+                mensagensErro.setText("Erro de sintaxe");
+            }
+        }else{
+            mensagensErro.setText("Porfavor insira o primeiro conjunto");
         }
     }//GEN-LAST:event_botaoDigitoIgualActionPerformed
 
@@ -335,9 +370,15 @@ public class Calc extends javax.swing.JPanel implements java.beans.Customizer {
 
     private void botaoDigitoSomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDigitoSomaActionPerformed
         if(modelCalculator.getPrimeiroConjunto() == null){
-            modelCalculator.setPrimeiroConjunto(Float.parseFloat(campoInputDados.getText()));
-            campoInputDados.setText(campoInputDados.getText() + " + ");
-            modelCalculator.setOperador("+");
+            try{
+                modelCalculator.setPrimeiroConjunto(Float.parseFloat(campoInputDados.getText()));
+                campoInputDados.setText(campoInputDados.getText() + " + ");
+                modelCalculator.setOperador("+");
+            } catch(NumberFormatException nfe){
+                mensagensErro.setText("Erro de sintaxe");
+            }
+        }else{
+            mensagensErro.setText("Porfavor insira o primeiro conjunto");
         }
     }//GEN-LAST:event_botaoDigitoSomaActionPerformed
 
@@ -361,6 +402,7 @@ public class Calc extends javax.swing.JPanel implements java.beans.Customizer {
     private javax.swing.JButton botaoDigitoSoma;
     private javax.swing.JTextField campoInputDados;
     private javax.swing.JTextField campoResposta;
+    private javax.swing.JLabel mensagensErro;
     // End of variables declaration//GEN-END:variables
 
     @Override
